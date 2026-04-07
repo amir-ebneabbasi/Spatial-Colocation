@@ -1,10 +1,3 @@
-import os
-import requests
-import nibabel as nb
-import numpy as np
-import pandas as pd
-from scipy import stats
-
 def fetch_cyto_cortical_layers(
     out_dir="./cytoarchitectonics",
     github_base="https://raw.githubusercontent.com/kwagstyl/cortical_layers_tutorial/main/data/",
@@ -12,6 +5,13 @@ def fetch_cyto_cortical_layers(
     output_name="cyto_data.csv"
 ):
 
+    import os
+    import requests
+    import nibabel as nb
+    import numpy as np
+    import pandas as pd
+    from scipy import stats
+    
     files = {
         "surf": "gray_left_327680.surf.gii",
         "parcellation": "HCP_left.txt",
