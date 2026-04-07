@@ -1,12 +1,12 @@
-import os
-import requests
-
 def fetch_neurotransmitter_maps(
     data_dir="./neurotransmitter_maps",
     repo_api_url="https://api.github.com/repos/justinehansen/hansen_receptors-1/contents/data/PET_nifti_images",
     overwrite=False,
     verbose=True
 ):
+    
+    import os
+    import requests
 
     os.makedirs(data_dir, exist_ok=True)
 
