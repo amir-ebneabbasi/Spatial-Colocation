@@ -25,8 +25,7 @@ def fetch_neuroquery_maps(
         terms = df["name"].dropna().tolist()
         if verbose:
             print(f"Loaded {len(terms)} terms from Cognitive Atlas")
-    if not terms:
-        raise ValueError("No terms provided and Cognitive Atlas not enabled")
+            
     if encoder is None:
         encoder = NeuroQueryModel.from_data_dir(fetch_neuroquery_model())
 
