@@ -1,10 +1,3 @@
-import os
-import requests
-import pandas as pd
-import nibabel as nib
-from neuroquery import fetch_neuroquery_model, NeuroQueryModel
-
-
 def fetch_neuroquery_maps(
     terms=None,
     use_cognitive_atlas=False,
@@ -12,6 +5,12 @@ def fetch_neuroquery_maps(
     encoder=None,
     verbose=True
 ):
+
+    import os
+    import requests
+    import pandas as pd
+    import nibabel as nib
+    from neuroquery import fetch_neuroquery_model, NeuroQueryModel
 
     if use_cognitive_atlas:
         url = "https://cognitiveatlas.org/api/v-alpha/concept"
