@@ -11,6 +11,8 @@ def fetch_cyto_cortical_layers(
     import numpy as np
     import pandas as pd
     from scipy import stats
+
+    os.makedirs(out_dir, exist_ok=True)
     
     files = {
         "surf": "gray_left_327680.surf.gii",
@@ -19,8 +21,6 @@ def fetch_cyto_cortical_layers(
         "profiles": "profiles_left.npy",
         "thickness": "thicknesses_left.npy"
     }
-
-    os.makedirs(out_dir, exist_ok=True)
 
     local_files = {}
     for key, fname in files.items():
@@ -42,7 +42,6 @@ def fetch_cyto_cortical_layers(
     thickness = np.load(local_files["thickness"])
 
     roi_indices = [np.where(parcellation == i)[0] for i in range(len(labels))]
-
     roi_metrics = {
         'ROI': labels.tolist(),
         'Mean': [profiles[idx].mean() for idx in roi_indices],
