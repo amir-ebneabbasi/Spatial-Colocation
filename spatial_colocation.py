@@ -1,11 +1,10 @@
-import pandas as pd
-from scipy import stats
-import matplotlib.pyplot as plt
-from wordcloud import WordCloud
-import math
-import os
-
 def spin_test(spins_path, data_path, maps_path, output_dir, output_prefix):
+
+    import pandas as pd
+    from scipy import stats
+    from wordcloud import WordCloud
+    import math
+    import os
 
     spins = pd.read_csv(spins_path)
     data = pd.read_csv(data_path)
