@@ -28,7 +28,7 @@ Generates meta-analytic brain maps using NeuroQuery for a list of terms.
 
 ### 3. `fetch_neurotransmitter_maps`
 
-Retrieves PET receptor‑density volumes from Hansen et al. 2022 for downstream parcellation via parcellate_volumetric_maps
+Retrieves PET receptor‑density volumes from Hansen et al. 2022 for downstream parcellation via `parcellate_volumetric_maps`.
 
 ### 4. `fetch_enigma`
 
