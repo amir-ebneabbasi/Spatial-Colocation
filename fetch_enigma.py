@@ -1,8 +1,5 @@
 """Cortical summary statistics; adapted from the supplied @saratheriver loader."""
 
-from pathlib import Path
-import pandas as pd
-
 RAW_BASE_URL = "https://raw.githubusercontent.com/MICA-MNI/ENIGMA/master/enigmatoolbox/datasets/summary_statistics"
 
 _FILES = {
