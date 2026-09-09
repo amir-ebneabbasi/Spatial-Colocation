@@ -30,11 +30,15 @@ Generates meta-analytic brain maps using NeuroQuery for a list of terms.
 
 Downloads PET-based neurotransmitter maps.
 
-### 4. `parcellate_volumetric_maps`
+### 4. `fetch_enigma`
+
+Loads all ENIGMA cortical summary‑statistics CSVs across disorders, age groups, and subgroup contrasts.
+
+### 5. `parcellate_volumetric_maps`
 
 Parcellates volumetric NIfTI maps into atlas-defined regions using `neuromaps`.
 
-### 5. `spin_test`
+### 6. `spin_test`
 
 Performs spatial permutation testing (spin test) to assess correlations between neuroimaging phenotypes and biological maps.
 
