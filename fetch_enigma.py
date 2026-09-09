@@ -3,6 +3,7 @@
 from pathlib import Path
 import pandas as pd
 
+RAW_BASE_URL = "https://raw.githubusercontent.com/MICA-MNI/ENIGMA/master/enigmatoolbox/datasets/summary_statistics"
 
 _FILES = {
     '22q': {
@@ -200,19 +201,44 @@ _FILES = {
     },
 }
 
-
-
-def load_summary_stats(data_dir=None):
-    """Return {disorder: {name: DataFrame}} for all cortical summary statistics.
-
-    By default, read from the summary_statistics folder beside this script.
-    Set data_dir to that folder's path when the CSVs are stored elsewhere.
+def fetch_summary_stats(save_local=False, save_dir="./summary_statistics"):
+    """Fetch ENIGMA summary statistics CSVs directly from GitHub.
+    
+    Args:
+        save_local (bool): If True, downloads and saves the CSVs to save_dir.
+        save_dir (str/Path): Folder path to save downloaded files.
+        
+    Returns:
+        dict: Nested dict {disorder: {key: pd.DataFrame}}
     """
-    folder = Path(data_dir) if data_dir is not None else Path(__file__).parent / "summary_statistics"
-    return {
-        disorder: {
-            key: pd.read_csv(folder / filename, on_bad_lines="skip")
-            for key, filename in files.items()
-        }
-        for disorder, files in _FILES.items()
-    }
+    data = {}
+    
+    if save_local:
+        Path(save_dir).mkdir(parents=True, exist_ok=True)
+
+    for disorder, files in _FILES.items():
+        data[disorder] = {}
+        for key, filename in files.items():
+            raw_url = f"{RAW_BASE_URL}/{filename}"
+            try:
+                response = requests.get(raw_url)
+                response.raise_for_status()
+                
+                # Load directly into Pandas DataFrame
+                df = pd.read_csv(io.StringIO(response.text), on_bad_lines="skip")
+                data[disorder][key] = df
+                
+                # Save locally if requested
+                if save_local:
+                    out_path = Path(save_dir) / filename
+                    out_path.write_text(response.text, encoding='utf-8')
+                    
+                print(f"Successfully loaded: [{disorder}] {key}")
+            except Exception as e:
+                print(f"Failed to download [{disorder}] {key} ({filename}): {e}")
+                
+    return data
+
+# # Usage Example:
+# if __name__ == "__main__":
+#     summary_data = fetch_summary_stats(save_local=True)
