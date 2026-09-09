@@ -13,7 +13,6 @@ Downloads and processes BigBrain's cytoarchitectonic data.
 * Downloads surface, parcellation, and layer profile data
 * Computes ROI-wise mean and standard deviation
 * Extracts cortical thickness across 6 layers
-* Optionally saves results as CSV
 
 ### 2. `fetch_neuroquery_maps`
 
