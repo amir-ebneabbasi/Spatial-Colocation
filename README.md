@@ -39,7 +39,7 @@ Parcellates volumetric NIfTI maps into atlas-defined regions using `neuromaps`.
 
 ### 6. `generate_spins`
 
-Generates spatially constrained null permutations of cortical parcels using their spherical coordinates. It independently rotates the left and right hemispheres while preserving hemispheric symmetry, then reassigns rotated parcels to the original parcels using either the Hungarian algorithm or the Vasa method.
+Generates spatially constrained null permutations of cortical parcels using their spherical coordinates. It independently rotates the left and right hemispheres while preserving hemispheric symmetry, then reassigns rotated parcels to the original parcels using either the `Hungarian` algorithm or the `Vasa` method.
 
 ### 7. `spin_test`
 
