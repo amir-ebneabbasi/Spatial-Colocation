@@ -1,3 +1,5 @@
+# This code is sourced from the original R implementation by František Váša and has been converted to Python.
+
 def rotate_parcellation(coord_l, coord_r, nrot=1000, method="hungarian"):
 
     import numpy as np
